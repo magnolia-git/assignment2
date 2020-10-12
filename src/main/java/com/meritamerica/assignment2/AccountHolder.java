@@ -18,6 +18,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	private SavingsAccount[] saveAccount;
 	private CDAccount[] cdAccount;
 	private double totalAccountBalance;
+	private long masterAccountNumber;
 	
 	/*
 	 * Constructors:
@@ -28,8 +29,11 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
+		this.masterAccountNumber = 0l;
+		this.totalAccountBalance = 0.0;
 	}
 	
+	/*
 	public AccountHolder(String firstName, String middleName, String lastName, String ssn, 
 						double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
 		
@@ -42,6 +46,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		checkAccount = new CheckingAccount(checkingAccountOpeningBalance);
 		saveAccount = new SavingsAccount(savingsAccountOpeningBalance);
 	}
+	*/
 	
 	/*
 	 * Class Methods:
@@ -79,13 +84,13 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.ssn = ssn;
 	}
 	public CheckingAccount addCheckingAccount(double openingBalance) {
-		// creates a checking account
+		return new CheckingAccount
 	}
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		// creats a checking account
+		
 	}
 	public CheckingAccount[] getCheckingAccounts() {
-		
+		return this.checkAccount;
 //		return this.checkAccount;
 	}
 	public int getNumberOfCheckingAccounts() {
@@ -102,11 +107,11 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		
 	}
 	public SavingsAccount[] getSavingsAccount() {
-		
+		return this.saveAccount;
 //		return this.saveAccount;
 	}
 	public int getNumberOfSavingsAccounts() {
-		
+		return this.saveAccount.length;
 	}
 	public double getSavingsBalance() {
 		
@@ -118,10 +123,10 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		
 	}
 	public CDAccount[] getCDAccounts() {
-		
+		return this.cdAccount;
 	}
 	public int getNumberOfCDAccounts() {
-		
+		return this.cdAccount.length;
 	}
 	public double getCDBalance() {
 		
@@ -134,5 +139,10 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 				"SSN: " + this.ssn + "\n" +
 				this.getCheckingAccount().toString() + "\n" +
 				this.getSavingsAccount().toString();
+	}
+	
+	public long getNewAccountNumber() {
+		
+		return this.masterAccountNumber + 1;
 	}
 }

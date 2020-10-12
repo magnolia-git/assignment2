@@ -10,7 +10,7 @@ public class MeritBank {
  */
 	
 	private static AccountHolder[] accountHolders;
-	private CDOffering[] cdOfferings;
+	private static CDOffering[] cdOfferings;
 
 /*
  * Class methods:
@@ -25,7 +25,7 @@ public class MeritBank {
 	}
 	
 	static CDOffering[] getCDOfferings() {
-		
+		return cdOfferings;
 	}
 	
 	static CDOffering getBestCDOffering(double depositAmount) {

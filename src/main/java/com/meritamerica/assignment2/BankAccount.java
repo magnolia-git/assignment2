@@ -17,10 +17,11 @@ public class BankAccount {
 	public BankAccount(double balance, double interestRate) {
 		this.accountBalance = balance;
 		this.interestRate = interestRate;
+		// assign account number since it was previously unknown
 	}
 	
 	public BankAccount(long accountNumber, double balance, double interestRate) {
-		
+		this.accountNumber = accountNumber;
 	}
 	
 	/*
