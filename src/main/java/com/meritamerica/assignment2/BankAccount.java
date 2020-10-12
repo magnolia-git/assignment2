@@ -3,7 +3,7 @@ package com.meritamerica.assignment2;
 public class BankAccount {
 	
 	/*
-	 * Instance variables;
+	 * Instance Variables:
 	 */
 	
 	private double accountBalance;
@@ -14,13 +14,20 @@ public class BankAccount {
 	 * Constructors:
 	 */
 	
+	public BankAccount(double balance) {
+		this.accountBalance = balance;
+		// add account number
+	}
+	
 	public BankAccount(double balance, double interestRate) {
 		this.accountBalance = balance;
 		this.interestRate = interestRate;
-		// assign account number since it was previously unknown
+		// Somehow get account number.
 	}
 	
 	public BankAccount(long accountNumber, double balance, double interestRate) {
+		this.accountNumber = accountNumber;
+		this.accountBalance = balance;
 		this.accountNumber = accountNumber;
 	}
 	
@@ -29,11 +36,12 @@ public class BankAccount {
 	 */
 	
 	public long getAccountNumber() {
-		return 0l;
+		return this.accountNumber;
 	}
 	
-	public double getInterestRate() {
-		return 0.0;
+	public double getBalance() {
+		
+		return this.accountBalance;
 	}
 	
 	public boolean withdraw(double amount) {
@@ -58,7 +66,4 @@ public class BankAccount {
 		}
 	}
 	
-	public double futureValue(int years) {
-		return this.accountBalance * (Math.pow(1 + this.interestRate, years));
-	}
 }

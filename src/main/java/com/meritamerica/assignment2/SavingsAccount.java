@@ -2,80 +2,29 @@ package com.meritamerica.assignment2;
 
 public class SavingsAccount extends BankAccount {
 	
+
+
 	/*
 	 * Instance Variables:
 	 */
 	
-	private double accountBalance;
-	private double interestRate;
 
 	/*
 	 * Constructor:
 	 */
 	
-	public SavingsAccount(double openingBalance) {
-		this.accountBalance = openingBalance;
-		this.interestRate = 0.01;
-		System.out.println("New savings account created.");
+	public SavingsAccount(double balance, double interestRate) {
+		super(balance, interestRate);
+		//this.accountBalance = balance;
 	}
 	
+
 	/*
 	 * Methods:
 	 */
 	
-	public double getBalance() {
-		return this.accountBalance;
-	}
-	
-	/*
-	 * getInterestRate
-	 * 
-	 * Returns the interest rate.
-	 */
 	public double getInterestRate() {
-		return interestRate;
-	}
-	
-	/*
-	 * withdraw
-	 * 
-	 * Withdraws money from the account. Will return false if the amount withdrew is zero or less.
-	 */
-	public boolean withdraw(double amount) {
-		if(amount <= this.accountBalance) {
-			this.accountBalance -= amount;
-			return true;
-		} else {
-			System.out.println("You have insufficient funds to complete this transaction. " +
-								"Please call your bank if you feel this information is incorrect.");
-			return false;
-		}
-	}
-	
-	/*
-	 * deposit
-	 * 
-	 * Deposits money into the account. Will return false if the amount deposited is zero or less.
-	 */
-	public boolean deposit(double amount) {
-		if(amount <= 0) {
-			System.out.println("Cannot add a value of $0 or less!");
-			return false;
-		} else {
-			this.accountBalance += amount;
-			System.out.println("Deposited $" + amount + " into your account.");
-			return true;
-		}
-	}
-	
-	/*
-	 * futureValue
-	 * 
-	 * This computes how much money an account will have in a vaiable amount of
-	 * years.
-	 */
-	public double futureValue(int years) {
-		return this.accountBalance * (Math.pow(1 + this.interestRate, years));
+		return 0.01;
 	}
 	
 	/*
@@ -89,9 +38,13 @@ public class SavingsAccount extends BankAccount {
 		return valueToTruncate = newValue / 100;
 	}
 	
+	public double futureValue(int years) {
+		return this.getBalance() * (Math.pow(1 + this.getInterestRate(), years));
+	}
+	
 	public String toString() {
-		return "Savings Account Balance: $" + this.accountBalance + "\n" +
-				"Savings Account Interest Rate: " + this.interestRate + "\n" +
+		return "Savings Account Balance: $" + this.getBalance() + "\n" +
+				"Savings Account Interest Rate: 0.01\n" +
 				"Savings Account Balance in 3 years: $" + this.truncate(this.futureValue(3));
 	}
 	
