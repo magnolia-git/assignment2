@@ -1,6 +1,6 @@
 package com.meritamerica.assignment2;
 
-public class CheckingAccount {
+public class CheckingAccount extends BankAccount{
 	
 	double balance;				// balance will be returned with the balance of each AccountHolder, as seen with getBalance()
 	public CheckingAccount(double balance) {
