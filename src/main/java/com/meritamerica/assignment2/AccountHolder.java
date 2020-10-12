@@ -11,7 +11,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	public String firstName;
 	public String middleName;
 	public String lastName;
-	private String ssn;
+	public String ssn;
 	//double checkingAccountOpeningBalance;
 	//double savingsAccountOpeningBalance;
 	private CheckingAccount[] checkAccount;

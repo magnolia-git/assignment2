@@ -13,10 +13,6 @@ public class SavingsAccount extends BankAccount {
 	 * Constructor:
 	 */
 	
-	public SavingsAccount() {
-		super(this.balance, this.interestRate);
-	}
-	
 	public SavingsAccount(double openingBalance) {
 		this.accountBalance = openingBalance;
 		this.interestRate = 0.01;
