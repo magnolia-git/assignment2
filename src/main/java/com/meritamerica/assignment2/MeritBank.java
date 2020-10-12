@@ -17,7 +17,13 @@ public class MeritBank {
  */
 
 	static void addAccountHolder(AccountHolder accountHolder) {
-		accountHolder = new AccountHolder(accountHolder.firstName, accountHolder.middleName, accountHolder.lastName, accountHolder.ssn);
+		AccountHolder[] newAccountHolders = new AccountHolder[accountHolders.length + 1];
+		int i = 0;
+		for (i = 0; i < accountHolders.length; i++) {
+			newAccountHolders[i] = accountHolders[i];
+		}
+		newAccountHolders[i] = accountHolder;
+		accountHolders = newAccountHolders;
 	}
 	
 	static AccountHolder[] getAccountHolders() {

@@ -13,8 +13,8 @@ public class SavingsAccount extends BankAccount {
 	 * Constructor:
 	 */
 	
-	public SavingsAccount(double balance, double interestRate) {
-		super(balance, interestRate);
+	public SavingsAccount(double balance) {
+		super(balance);
 		//this.accountBalance = balance;
 	}
 	
