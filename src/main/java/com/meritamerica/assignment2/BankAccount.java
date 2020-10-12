@@ -6,6 +6,9 @@ public class BankAccount {
 	 * Instance variables;
 	 */
 	
+	private double accountBalance;
+	private long accountNumber;
+	
 	/*
 	 * Constructors:
 	 */

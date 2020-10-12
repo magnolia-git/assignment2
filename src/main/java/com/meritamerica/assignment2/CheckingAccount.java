@@ -2,11 +2,26 @@ package com.meritamerica.assignment2;
 
 public class CheckingAccount extends BankAccount{
 	
+	/*
+	 * Instance variables:
+	 */
+	
 	double balance;				// balance will be returned with the balance of each AccountHolder, as seen with getBalance()
+	
+	/*
+	 * Constructors:
+	 * 
+	 */
+	
 	public CheckingAccount(double balance) {
 		
 		this.balance = balance;
 	}
+	
+	/*
+	 * Class methods:
+	 */
+	
 	public double getBalance() {
 		
 		return this.balance;

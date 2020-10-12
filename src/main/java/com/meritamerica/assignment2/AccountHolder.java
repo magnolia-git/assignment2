@@ -4,14 +4,20 @@ import java.util.Arrays;
 
 public class AccountHolder {		// For sake of clarity, each AccountHolder will have 6 parameters.
 									// Some are private, like the social security number.
+	/*
+	 * Instance variables:
+	 */
+	
 	public String firstName;
 	public String middleName;
 	public String lastName;
 	private String ssn;
-	double checkingAccountOpeningBalance;
-	double savingsAccountOpeningBalance;
-	CheckingAccount checkAccount;
-	SavingsAccount saveAccount;
+	//double checkingAccountOpeningBalance;
+	//double savingsAccountOpeningBalance;
+	private CheckingAccount[] checkAccount;
+	private SavingsAccount[] saveAccount;
+	private CDAccount[] cdAccount;
+	private double totalAccountBalance;
 	
 	/*
 	 * Constructors:
@@ -73,20 +79,21 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.ssn = ssn;
 	}
 	public CheckingAccount addCheckingAccount(double openingBalance) {
-		
+		// creates a checking account
 	}
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		
+		// creats a checking account
 	}
 	public CheckingAccount[] getCheckingAccounts() {
 		
 //		return this.checkAccount;
 	}
 	public int getNumberOfCheckingAccounts() {
-		
+		// looks at the checking account array and returns the array.length
+		return this.checkAccount.length;
 	}
 	public double getCheckingBalance() {
-		
+		// gets the balance of a checking account
 	}
 	public SavingsAccount addSavingsAccount(double openingBalance) {
 		
