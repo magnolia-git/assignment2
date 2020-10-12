@@ -12,12 +12,9 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	public String middleName;
 	public String lastName;
 	private String ssn;
-	//double checkingAccountOpeningBalance;
-	//double savingsAccountOpeningBalance;
 	private CheckingAccount[] checkAccounts;
-	private SavingsAccount[] saveAccount;
-	private CDAccount[] cdAccount;
-	private double totalAccountBalance;
+	private SavingsAccount[] saveAccounts;
+	private CDAccount[] cdAccounts;
 	private long masterAccountNumber;
 	
 	/*
@@ -30,10 +27,9 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.lastName = lastName;
 		this.ssn = ssn;
 		this.masterAccountNumber = 0l;
-		this.totalAccountBalance = 0.0;
 		this.checkAccounts = new CheckingAccount[10];
-		this.saveAccount = new SavingsAccount[10];
-		this.cdAccount = new CDAccount[10];
+		this.saveAccounts = new SavingsAccount[10];
+		this.cdAccounts = new CDAccount[10];
 	}
 	
 	/*
@@ -70,26 +66,38 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		
 		this.middleName = middleName;
 	}
+	
 	public String getLastName() {
 		
 		return this.lastName;
 	}
+	
 	private void setLastName(String lastName) {
 		
 		this.lastName = lastName;
 	}
+	
 	public String getSSN() {
 		
 		return this.ssn;
 	}
+	
 	private void setSSN(String ssn) {
 		
 		this.ssn = ssn;
 	}
+
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		CheckingAccount newname = new CheckingAccount(openingBalance);
-		return addCheckingAccount(newname);
+		addCheckingAccount(newname);
+		
+		//if(getCombinedBalance() >= 250000) {
+		//	System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+		//}
+		return newname;
+			
 	}
+
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
 		CheckingAccount[] newArray = new CheckingAccount[checkAccounts.length + 1];
 		int i;
@@ -98,51 +106,108 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		}
 		return newArray[i] = checkingAccount;
 	}
+	
 	public CheckingAccount[] getCheckingAccounts() {
 		return this.checkAccounts;
 	}
+	
 	public int getNumberOfCheckingAccounts() {
-		// looks at the checking account array and returns the array.length
 		return this.checkAccounts.length;
 	}
+	
 	public double getCheckingBalance() {
-		// gets the balance of a checking account
-		return checkAccounts[0].getBalance();
+		double total = 0;
+		
+		for(int i = 0;i < checkAccounts.length;i++) {
+			total += checkAccounts[i].getBalance();
+		}
+		
+		return total;
 	}
-//	public SavingsAccount addSavingsAccount(double openingBalance) {
+	
+	public SavingsAccount addSavingsAccount(double openingBalance) {
+		SavingsAccount newname = new SavingsAccount(openingBalance);
+		addSavingsAccount(newname);
 		
-//	}
-//	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		
-//	}
+		//if(getCombinedBalance() >= 250000) {
+		//	System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+		//}
+		return newname;
+	}
+
+	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
+		SavingsAccount[] newArray = new SavingsAccount[saveAccounts.length + 1];
+		int i;
+		for (i = 0; i < saveAccounts.length; i++) {
+			newArray[i] = saveAccounts[i];
+		}
+		return newArray[i] = savingsAccount;
+	}
+
 	public SavingsAccount[] getSavingsAccounts() {
-		return this.saveAccount;
-//		return this.saveAccount;
+		return this.saveAccounts;
 	}
+
 	public int getNumberOfSavingsAccounts() {
-		return this.saveAccount.length;
+		return this.saveAccounts.length;
 	}
-//	public double getSavingsBalance() {
+
+	public double getSavingsBalance() {
+		double total = 0;
 		
-//	}
-//	public CDAccount addCDAccount(CDOffering offering, double openingBalance) {
+		for(int i = 0;i < saveAccounts.length;i++) {
+			total += saveAccounts[i].getBalance();
+		}
 		
-//	}
-//	public CDAccount addCDAccount(CDAccount cdAccount) {
-		
-//	}
+		return total;
+	}
+	
+	public CDAccount addCDAccount(CDAccount cdAccount) {
+		CDAccount[] newArray = new CDAccount[cdAccounts.length + 1];
+		int i;
+		for (i = 0; i < cdAccounts.length; i++) {
+			newArray[i] = cdAccounts[i];
+		}
+		return newArray[i] = cdAccount;
+	}
+
+	public CDAccount addCDAccount(CDOffering offering, double openingBalance) {
+		CDAccount newName = new CDAccount(offering, openingBalance);
+		return addCDAccount(newName);
+	}
+
 	public CDAccount[] getCDAccounts() {
-		return this.cdAccount;
+		return this.cdAccounts;
 	}
+
 	public int getNumberOfCDAccounts() {
-		return this.cdAccount.length;
+		return this.cdAccounts.length;
 	}
-//	public double getCDBalance() {
+
+	public double getCDBalance() {
+		double total = 0;
 		
-//	}
-//	public double getCombinedBalance() {
+		for(int i = 0;i < cdAccounts.length;i++) {
+			total += cdAccounts[i].getBalance();
+		}
 		
-//	}
+		return total;
+	}
+
+	public double getCombinedBalance() {
+		double total = 0;
+		
+		for(int i = 0;i < checkAccounts.length;i++) {
+			total += checkAccounts[i].getBalance();
+		}
+		
+		for(int i = 0;i < saveAccounts.length;i++) {
+			total += saveAccounts[i].getBalance();
+		}
+		
+		return total;
+	}
+	
 	public String toString() {
 		return "Name: " + this.firstName + " " + this.middleName + " " + this.lastName + "\n" +
 				"SSN: " + this.ssn + "\n" +

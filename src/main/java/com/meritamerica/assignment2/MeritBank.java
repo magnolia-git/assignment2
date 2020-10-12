@@ -12,6 +12,11 @@ public class MeritBank {
 	private static AccountHolder[] accountHolders;
 	private static CDOffering[] cdOfferings;
 
+	public MeritBank() {
+		MeritBank.accountHolders = new AccountHolder[10];
+		MeritBank.cdOfferings = new CDOffering[10];
+	}
+	
 /*
  * Class methods:
  */
@@ -25,22 +30,24 @@ public class MeritBank {
 		newAccountHolders[i] = accountHolder;
 		accountHolders = newAccountHolders;
 	}
-	
+
 	static AccountHolder[] getAccountHolders() {
 		return accountHolders;
 	}
-	
+
 	static CDOffering[] getCDOfferings() {
 		return cdOfferings;
 	}
-	
+
+	/*
 	static CDOffering getBestCDOffering(double depositAmount) {
-		
+		//new CDOffering
 	}
-	
+
 	static CDOffering getSecondBestCDOffering(double depositAmount) {
 		
 	}
+	*/
 	
 	static void clearCDOfferings() {
 		
@@ -50,17 +57,21 @@ public class MeritBank {
 		
 	}
 	
-	static long getNextAccountNumber() {
+	//static long getNextAccountNumber() {
 		
-	}
+	//}
 	
 	static double totalBalances() {
-		
+		double total = 0;
+		for(int i = 0; i < accountHolders.length;i++) {
+			total += accountHolders[i].getCombinedBalance();
+		}
+		return total;
 	}
 	
-	static double futureValue(double presentValue, 
-			double interestRate, int term) {
+	//static double futureValue(double presentValue, 
+	//		double interestRate, int term) {
 		
-	}
+	//}
 	
 }
