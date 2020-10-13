@@ -36,7 +36,7 @@ public class MeritBank {
 		cdOfferings = offerings;
 	}
 	
-	/*
+/*
 	static CDOffering getBestCDOffering(double depositAmount) {
 		//new CDOffering
 	}
@@ -44,7 +44,7 @@ public class MeritBank {
 	static CDOffering getSecondBestCDOffering(double depositAmount) {
 		
 	}
-	*/
+*/
 	
 	static void clearCDOfferings() {
 		cdOfferings = null;
