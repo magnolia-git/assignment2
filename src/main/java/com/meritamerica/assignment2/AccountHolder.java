@@ -86,12 +86,14 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		CheckingAccount newname = new CheckingAccount(openingBalance);
-		//System.out.println(openingBalance);
-		return addCheckingAccount(newname);
 		
-		//if(getCombinedBalance() >= 250000) {
-		//	System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
-		//}
+		if(getCombinedBalance() + openingBalance >= 250000) {
+			System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+			return null;
+		} else {
+			return addCheckingAccount(newname);
+		}
+		
 	}
 
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
@@ -107,7 +109,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	}
 	
 	public CheckingAccount[] getCheckingAccounts() {
-		return this.checkAccounts;
+		return checkAccounts;
 	}
 	
 	public int getNumberOfCheckingAccounts() {
@@ -213,8 +215,8 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	public String toString() {
 		return "Name: " + this.firstName + " " + this.middleName + " " + this.lastName + "\n" +
 				"SSN: " + this.ssn + "\n" +
-				this.getCheckingAccounts().toString() + "\n" +
-				this.getSavingsAccounts().toString();
+				this.getCheckingAccounts().toString();
+//				this.getSavingsAccounts().toString();
 	}
 	
 	public long getNewAccountNumber() {
