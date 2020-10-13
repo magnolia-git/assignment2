@@ -7,6 +7,7 @@ public class MeritBank {
 
 	static AccountHolder[] accountHolders = new AccountHolder[0];
 	static CDOffering[] cdOfferings = new CDOffering[0];
+	static long masterAccountNumber = 000000000;
 /*
  * Class methods:
  */
@@ -49,9 +50,9 @@ public class MeritBank {
 		
 	}
 	
-	//static long getNextAccountNumber() {
-		
-	//}
+	static long getNextAccountNumber() {
+		return masterAccountNumber++;
+	}
 	
 	static double totalBalances() {
 		double total = 0;

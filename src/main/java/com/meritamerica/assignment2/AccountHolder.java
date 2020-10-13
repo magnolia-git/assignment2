@@ -15,7 +15,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	private CheckingAccount[] checkAccounts = new CheckingAccount[0];
 	private SavingsAccount[] saveAccounts = new SavingsAccount[0];
 	private CDAccount[] cdAccounts = new CDAccount[0];
-	private long masterAccountNumber;
+	private long masterAccountNumber = 000000000;
 	
 	/*
 	 * Constructors:
@@ -102,7 +102,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		}
 		
 		newArray[i] = checkingAccount;
-		//System.out.println(newArray[i].getBalance());
+		checkAccounts = newArray;
 		return checkingAccount;
 	}
 	
@@ -139,7 +139,9 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		for (i = 0; i < saveAccounts.length; i++) {
 			newArray[i] = saveAccounts[i];
 		}
-		return newArray[i] = savingsAccount;
+		newArray[i] = savingsAccount;
+		saveAccounts = newArray;
+		return savingsAccount;
 	}
 
 	public SavingsAccount[] getSavingsAccounts() {
@@ -166,7 +168,9 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		for (i = 0; i < cdAccounts.length; i++) {
 			newArray[i] = cdAccounts[i];
 		}
-		return newArray[i] = cdAccount;
+		newArray[i] = cdAccount;
+		cdAccounts = newArray;
+		return cdAccount;
 	}
 
 	public CDAccount addCDAccount(CDOffering offering, double openingBalance) {

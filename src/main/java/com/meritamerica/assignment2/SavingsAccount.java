@@ -14,8 +14,8 @@ public class SavingsAccount extends BankAccount {
 	
 	public SavingsAccount(double balance) {
 		super(balance);
-		//this.accountBalance = balance;
 	}
+
 	
 
 	/*

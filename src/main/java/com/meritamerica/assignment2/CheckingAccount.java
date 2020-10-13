@@ -12,10 +12,9 @@ public class CheckingAccount extends BankAccount{
 	 */
 	
 	public CheckingAccount(double balance) {
-		
 		super(balance);
 	}
-	
+
 	/*
 	 * Class methods:
 	 */
@@ -33,13 +32,13 @@ public class CheckingAccount extends BankAccount{
 	}
 	
 	public double futureValue(int years) {
-		return this.getBalance() * (Math.pow(1 + this.getInterestRate(), years));
+		return getBalance() * (Math.pow(1 + getInterestRate(), years));
 	}
 	
 	public String toString() {
 		
-		return  "Checking Account Balance: $" + this.getBalance() + "\n" +
+		return  "Checking Account Balance: $" + getBalance() + "\n" +
 				"Checking Account Interest Rate: 0.0001\n" +
-				"Checking Account Balance in 3 years: $" + this.truncateValue(futureValue(3));
+				"Checking Account Balance in 3 years: $" + truncateValue(futureValue(3));
 	}
 }
