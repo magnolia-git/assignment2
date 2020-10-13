@@ -4,6 +4,13 @@ package com.meritamerica.assignment2;
 
 public class AccountHolder {		// For sake of clarity, each AccountHolder will have 6 parameters.
 									// Some are private, like the social security number.
+	
+	/*
+	 * Constants:
+	 */
+	
+	public static final long MAX_ALLOWED = 250000;
+	
 	/*
 	 * Instance variables:
 	 */
@@ -28,21 +35,6 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.ssn = ssn;
 		this.masterAccountNumber = 0l;
 	}
-	
-	/*
-	public AccountHolder(String firstName, String middleName, String lastName, String ssn, 
-						double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
-		
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.ssn = ssn;
-		this.checkingAccountOpeningBalance = checkingAccountOpeningBalance;
-		this.savingsAccountOpeningBalance = savingsAccountOpeningBalance;
-		checkAccount = new CheckingAccount(checkingAccountOpeningBalance);
-		saveAccount = new SavingsAccount(savingsAccountOpeningBalance);
-	}
-	*/
 	
 	/*
 	 * Class Methods:
@@ -84,15 +76,30 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.ssn = ssn;
 	}
 
+	/*
+	 * addCheckingAccount
+	 * 
+	 * These two methods add a checking account to the checkingAccount class array.
+	 * One accepts an opening balance and creates a new checking account object.
+	 * Then, if the combined balance of all accounts is less than 250000, we call
+	 * the other addCheckingAccount method and pass it our new checking account.
+	 * 
+	 * In the second method, we create a new array equal with a size equal to the
+	 * old checking account array plus one. Loop through and re-add old objects,
+	 * then add our newest one.
+	 * 
+	 * Finally, we set the old checking account array equal to the new one. This
+	 * essentially updates the pointer in the checkAccounts array.
+	 */
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		CheckingAccount newname = new CheckingAccount(openingBalance);
 		
-		if(getCombinedBalance() + openingBalance >= 250000) {
-			System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
-			return null;
-		} else {
-			return addCheckingAccount(newname);
-		}
+		//if(getCombinedBalance() + openingBalance >= 250000) {
+		//	System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+		//	return null;
+		//} else {
+		return addCheckingAccount(newname);
+		//}
 		
 	}
 
@@ -105,17 +112,36 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		
 		newArray[i] = checkingAccount;
 		checkAccounts = newArray;
+		
+		//if(getCombinedBalance() >= MAX_ALLOWED)
+		
 		return checkingAccount;
 	}
 	
+	/*
+	 * getCheckingAccounts
+	 * 
+	 * This method returns the checkAccounts array.
+	 */
 	public CheckingAccount[] getCheckingAccounts() {
 		return checkAccounts;
 	}
 	
+	/*
+	 * getNumberOfCheckingAccounts
+	 * 
+	 * Simply returns how many checking accounts we have.
+	 */
 	public int getNumberOfCheckingAccounts() {
 		return this.checkAccounts.length;
 	}
 	
+	/*
+	 * getCheckingBalance
+	 * 
+	 * This method returns a total of all the checking accounts
+	 * combined.
+	 */
 	public double getCheckingBalance() {
 		double total = 0;
 		for(int i = 0;i < checkAccounts.length; i++) {
@@ -125,14 +151,16 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		return total;
 	}
 	
+	
 	public SavingsAccount addSavingsAccount(double openingBalance) {
 		SavingsAccount newname = new SavingsAccount(openingBalance);
-		addSavingsAccount(newname);
 		
-		//if(getCombinedBalance() >= 250000) {
-		//	System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
-		//}
-		return newname;
+		if(getCombinedBalance() + openingBalance >= 250000) {
+			System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+			return null;
+		} else {
+			return addSavingsAccount(newname);
+		}
 	}
 
 	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
@@ -209,6 +237,10 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 			total += saveAccounts[i].getBalance();
 		}
 		
+		for(int i = 0;i < cdAccounts.length;i++) {
+			total += cdAccounts[i].getBalance();
+		}
+		
 		return total;
 	}
 	
@@ -216,7 +248,6 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		return "Name: " + this.firstName + " " + this.middleName + " " + this.lastName + "\n" +
 				"SSN: " + this.ssn + "\n" +
 				this.getCheckingAccounts().toString();
-//				this.getSavingsAccounts().toString();
 	}
 	
 	public long getNewAccountNumber() {

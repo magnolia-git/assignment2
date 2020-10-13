@@ -32,6 +32,10 @@ public class MeritBank {
 		return cdOfferings;
 	}
 
+	static void setCDOfferings(CDOffering[] offerings) {
+		cdOfferings = offerings;
+	}
+	
 	/*
 	static CDOffering getBestCDOffering(double depositAmount) {
 		//new CDOffering
@@ -46,9 +50,7 @@ public class MeritBank {
 		cdOfferings = null;
 	}
 	
-	static void setCDOfferings(CDOffering[] offerings) {
-		
-	}
+
 	
 	static long getNextAccountNumber() {
 		return masterAccountNumber++;
