@@ -17,19 +17,20 @@ public class BankAccount {
 	
 	public BankAccount(double balance) {
 		this.accountBalance = balance;
-		// add account number
+		this.accountNumber = AccountHolder.getNewAccountNumber();
 	}
 	
 	public BankAccount(double balance, double interestRate) {
 		this.accountBalance = balance;
 		this.interestRate = interestRate;
-		// Somehow get account number.
+		this.accountNumber = AccountHolder.getNewAccountNumber();
 	}
 	
 	public BankAccount(long accountNumber, double balance, double interestRate) {
 		this.accountNumber = accountNumber;
 		this.accountBalance = balance;
 		this.accountNumber = accountNumber;
+		this.accountNumber = AccountHolder.getNewAccountNumber();
 	}
 	
 	/*

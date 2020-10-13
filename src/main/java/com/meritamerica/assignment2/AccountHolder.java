@@ -1,9 +1,6 @@
 package com.meritamerica.assignment2;
 
-//import java.util.Arrays;
-
-public class AccountHolder {		// For sake of clarity, each AccountHolder will have 6 parameters.
-									// Some are private, like the social security number.
+public class AccountHolder {
 	
 	/*
 	 * Constants:
@@ -22,7 +19,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	private CheckingAccount[] checkAccounts = new CheckingAccount[0];
 	private SavingsAccount[] saveAccounts = new SavingsAccount[0];
 	private CDAccount[] cdAccounts = new CDAccount[0];
-	private long masterAccountNumber = 000000000;
+	private static long masterAccountNumber;
 	
 	/*
 	 * Constructors:
@@ -33,7 +30,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		this.masterAccountNumber = 0l;
+		masterAccountNumber = 000000000;
 	}
 	
 	/*
@@ -94,28 +91,31 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		CheckingAccount newname = new CheckingAccount(openingBalance);
 		
-		//if(getCombinedBalance() + openingBalance >= 250000) {
-		//	System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
-		//	return null;
-		//} else {
+		if(getCombinedBalance() + openingBalance >= MAX_ALLOWED) {
+			System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+			return null;
+		} else {
 		return addCheckingAccount(newname);
-		//}
+		}
 		
 	}
 
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		CheckingAccount[] newArray = new CheckingAccount[checkAccounts.length + 1];
-		int i;
-		for (i = 0; i < checkAccounts.length; i++) {
-			newArray[i] = checkAccounts[i];
+		if(getCombinedBalance() + checkingAccount.getBalance() >= MAX_ALLOWED) {
+			System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+			return null;
+		} else {
+			CheckingAccount[] newArray = new CheckingAccount[checkAccounts.length + 1];
+			int i;
+			for (i = 0; i < checkAccounts.length; i++) {
+				newArray[i] = checkAccounts[i];
+			}
+		
+			newArray[i] = checkingAccount;
+			checkAccounts = newArray;
+		
+			return checkingAccount;
 		}
-		
-		newArray[i] = checkingAccount;
-		checkAccounts = newArray;
-		
-		//if(getCombinedBalance() >= MAX_ALLOWED)
-		
-		return checkingAccount;
 	}
 	
 	/*
@@ -155,7 +155,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	public SavingsAccount addSavingsAccount(double openingBalance) {
 		SavingsAccount newname = new SavingsAccount(openingBalance);
 		
-		if(getCombinedBalance() + openingBalance >= 250000) {
+		if(getCombinedBalance() + openingBalance >= MAX_ALLOWED) {
 			System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
 			return null;
 		} else {
@@ -164,14 +164,19 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	}
 
 	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		SavingsAccount[] newArray = new SavingsAccount[saveAccounts.length + 1];
-		int i;
-		for (i = 0; i < saveAccounts.length; i++) {
-			newArray[i] = saveAccounts[i];
+		if(getCombinedBalance() + savingsAccount.getBalance() >= MAX_ALLOWED) {
+			System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
+			return null;
+		} else {
+			SavingsAccount[] newArray = new SavingsAccount[saveAccounts.length + 1];
+			int i;
+			for (i = 0; i < saveAccounts.length; i++) {
+				newArray[i] = saveAccounts[i];
+			}
+			newArray[i] = savingsAccount;
+			saveAccounts = newArray;
+			return savingsAccount;
 		}
-		newArray[i] = savingsAccount;
-		saveAccounts = newArray;
-		return savingsAccount;
 	}
 
 	public SavingsAccount[] getSavingsAccounts() {
@@ -250,8 +255,8 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 				this.getCheckingAccounts().toString();
 	}
 	
-	public long getNewAccountNumber() {
+	public static long getNewAccountNumber() {
 		
-		return this.masterAccountNumber + 1;
+		return masterAccountNumber + 1;
 	}
 }
