@@ -7,7 +7,8 @@ public class BankAccount {
 	 */
 	
 	private double accountBalance;
-	private long accountNumber;
+//	private long masterAccountNumber = 000000000;
+	private long accountNumber = 000000000;
 	private double interestRate;
 	
 	/*

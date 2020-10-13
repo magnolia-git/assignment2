@@ -1,6 +1,6 @@
 package com.meritamerica.assignment2;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 public class AccountHolder {		// For sake of clarity, each AccountHolder will have 6 parameters.
 									// Some are private, like the social security number.
@@ -8,13 +8,13 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	 * Instance variables:
 	 */
 	
-	public String firstName;
-	public String middleName;
-	public String lastName;
+	private String firstName;
+	private String middleName;
+	private String lastName;
 	private String ssn;
-	private CheckingAccount[] checkAccounts;
-	private SavingsAccount[] saveAccounts;
-	private CDAccount[] cdAccounts;
+	private CheckingAccount[] checkAccounts = new CheckingAccount[0];
+	private SavingsAccount[] saveAccounts = new SavingsAccount[0];
+	private CDAccount[] cdAccounts = new CDAccount[0];
 	private long masterAccountNumber;
 	
 	/*
@@ -27,9 +27,6 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		this.lastName = lastName;
 		this.ssn = ssn;
 		this.masterAccountNumber = 0l;
-		this.checkAccounts = new CheckingAccount[10];
-		this.saveAccounts = new SavingsAccount[10];
-		this.cdAccounts = new CDAccount[10];
 	}
 	
 	/*
@@ -89,13 +86,12 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		CheckingAccount newname = new CheckingAccount(openingBalance);
-		addCheckingAccount(newname);
+		//System.out.println(openingBalance);
+		return addCheckingAccount(newname);
 		
 		//if(getCombinedBalance() >= 250000) {
 		//	System.out.println("You have reached the maximum total balance across all accounts. Cannot create another.");
 		//}
-		return newname;
-			
 	}
 
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
@@ -104,7 +100,10 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 		for (i = 0; i < checkAccounts.length; i++) {
 			newArray[i] = checkAccounts[i];
 		}
-		return newArray[i] = checkingAccount;
+		
+		newArray[i] = checkingAccount;
+		//System.out.println(newArray[i].getBalance());
+		return checkingAccount;
 	}
 	
 	public CheckingAccount[] getCheckingAccounts() {
@@ -117,8 +116,7 @@ public class AccountHolder {		// For sake of clarity, each AccountHolder will ha
 	
 	public double getCheckingBalance() {
 		double total = 0;
-		
-		for(int i = 0;i < checkAccounts.length;i++) {
+		for(int i = 0;i < checkAccounts.length; i++) {
 			total += checkAccounts[i].getBalance();
 		}
 		

@@ -1,31 +1,23 @@
 package com.meritamerica.assignment2;
 
-import java.util.Arrays;
-import java.util.Random;
+//import java.util.Arrays;
+//import java.util.Random;
 
 public class MeritBank {
-	
-/*
- * Instance variables:
- */
-	
-	private static AccountHolder[] accountHolders;
-	private static CDOffering[] cdOfferings;
 
-	public MeritBank() {
-		MeritBank.accountHolders = new AccountHolder[10];
-		MeritBank.cdOfferings = new CDOffering[10];
-	}
-	
+	static AccountHolder[] accountHolders = new AccountHolder[0];
+	static CDOffering[] cdOfferings = new CDOffering[0];
 /*
  * Class methods:
  */
 
 	static void addAccountHolder(AccountHolder accountHolder) {
+
 		AccountHolder[] newAccountHolders = new AccountHolder[accountHolders.length + 1];
 		int i = 0;
 		for (i = 0; i < accountHolders.length; i++) {
 			newAccountHolders[i] = accountHolders[i];
+			System.out.println("Inside for loop.");
 		}
 		newAccountHolders[i] = accountHolder;
 		accountHolders = newAccountHolders;
@@ -50,7 +42,7 @@ public class MeritBank {
 	*/
 	
 	static void clearCDOfferings() {
-		
+		cdOfferings = null;
 	}
 	
 	static void setCDOfferings(CDOffering[] offerings) {

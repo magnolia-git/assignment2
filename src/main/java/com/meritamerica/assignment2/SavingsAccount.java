@@ -7,7 +7,6 @@ public class SavingsAccount extends BankAccount {
 	/*
 	 * Instance Variables:
 	 */
-	
 
 	/*
 	 * Constructor:
