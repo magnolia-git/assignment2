@@ -12,7 +12,7 @@ public class MeritAmericaBankApp {
     	CDOfferings[2] = new CDOffering(3,2.0/100);
     	CDOfferings[3] = new CDOffering(5,2.5/100);
     	CDOfferings[4] = new CDOffering(10,2.2/100);
-    	MeritBank.setCDOfferings(CDOfferings);
+    	MeritBank.setcdOfferings(CDOfferings);
     	
     	AccountHolder ah1 = new AccountHolder("Jackie", "Chan", "Chan","1234567891");
     	CheckingAccount checkingAccount =new CheckingAccount(1000);

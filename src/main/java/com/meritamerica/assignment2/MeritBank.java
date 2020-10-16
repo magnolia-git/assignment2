@@ -5,8 +5,8 @@ package com.meritamerica.assignment2;
 
 public class MeritBank {
 
-	static AccountHolder[] accountHolders = new AccountHolder[0];
-	static CDOffering[] cdOfferings = new CDOffering[0];
+	static AccountHolder[] accountHoldersArray = new AccountHolder[0];
+	static CDOffering[] cdOfferingsArray = new CDOffering[0];
 	static long masterAccountNumber = 000000000;
 /*
  * Class methods:
@@ -14,45 +14,47 @@ public class MeritBank {
 
 	static void addAccountHolder(AccountHolder accountHolder) {
 
-		AccountHolder[] newAccountHolders = new AccountHolder[accountHolders.length + 1];
+		AccountHolder[] newAccountHoldersArray = new AccountHolder[accountHoldersArray.length + 1];
 		int i = 0;
-		for (i = 0; i < accountHolders.length; i++) {
-			newAccountHolders[i] = accountHolders[i];
+		for (i = 0; i < accountHoldersArray.length; i++) {
+			newAccountHoldersArray[i] = accountHoldersArray[i];
 			System.out.println("Inside for loop.");
 		}
-		newAccountHolders[i] = accountHolder;
-		accountHolders = newAccountHolders;
+		newAccountHoldersArray[i] = accountHolder;
+		accountHoldersArray = newAccountHoldersArray;
 	}
 
-	static AccountHolder[] getAccountHolders() {
-		return accountHolders;
+	static AccountHolder[] getaccountHoldersArray() {
+		return accountHoldersArray;
 	}
 
-	static CDOffering[] getCDOfferings() {
-		return cdOfferings;
+	static CDOffering[] getcdOfferings() {
+		return cdOfferingsArray;
 	}
 
-	static void setCDOfferings(CDOffering[] offerings) {
-		cdOfferings = offerings;
+	static void setcdOfferings(CDOffering[] offerings) {
+		cdOfferingsArray = offerings;
 	}
 	
 
 	static CDOffering getBestCDOffering(double depositAmount) {
 		double highestAmount = 0;
-		for (int i = 0; i < cdOfferings.length; i++) {
-			if (cdOfferings.) {
+//		for (int i = 0; i < cdOfferingsArray.length; i++) {
+//			if (cdOfferingsArray.) {
 				
-			}
-		}
+//			}
+//		}
+		return cdOfferingsArray[0];
 	}
 
 	static CDOffering getSecondBestCDOffering(double depositAmount) {
 		double secondHighestAmount = 0;
+		return cdOfferingsArray[0];
 	}
 
 	
-	static void clearCDOfferings() {
-		cdOfferings = null;
+	static void clearcdOfferings() {
+		cdOfferingsArray = null;
 	}
 	
 
@@ -63,8 +65,8 @@ public class MeritBank {
 	
 	static double totalBalances() {
 		double total = 0;
-		for(int i = 0; i < accountHolders.length;i++) {
-			total += accountHolders[i].getCombinedBalance();
+		for(int i = 0; i < accountHoldersArray.length;i++) {
+			total += accountHoldersArray[i].getCombinedBalance();
 		}
 		return total;
 	}
