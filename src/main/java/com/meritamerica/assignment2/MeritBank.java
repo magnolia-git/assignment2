@@ -36,15 +36,20 @@ public class MeritBank {
 		cdOfferings = offerings;
 	}
 	
-/*
+
 	static CDOffering getBestCDOffering(double depositAmount) {
-		//new CDOffering
+		double highestAmount = 0;
+		for (int i = 0; i < cdOfferings.length; i++) {
+			if (cdOfferings.) {
+				
+			}
+		}
 	}
 
 	static CDOffering getSecondBestCDOffering(double depositAmount) {
-		
+		double secondHighestAmount = 0;
 	}
-*/
+
 	
 	static void clearCDOfferings() {
 		cdOfferings = null;
